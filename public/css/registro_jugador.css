@@ -1,0 +1,154 @@
+body {
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   margin: 0;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background: linear-gradient(135deg, #657cff, #000, #fff);
+   background-size: 200% 200%;
+   color: #fff;
+}
+
+.encabezado {
+   width: 100%;
+   background: rgba(0, 0, 0, 0.5);
+   backdrop-filter: blur(10px);
+   padding: 10px 40px;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contenedor_encabezado {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+
+
+
+.bloque_logo {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.imagen_logo {
+   width: 70px;
+   border-radius: 50%;
+   filter: drop-shadow(0 0 8px #00a6ff);
+}
+
+.nombre_sitio {
+   font-size: 1.8rem;
+   font-weight: bold;
+   color: #fff;
+   text-shadow: 0 0 8px #007bff;
+   margin: 0;
+}
+
+.menu_superior .lista_menu {
+   list-style: none;
+   display: flex;
+   gap: 25px;
+   margin: 0;
+   padding: 0;
+   
+
+}
+
+.menu_superior a {
+   text-decoration: none;
+   color: #fff;
+   font-weight: 600;
+   transition: 0.3s;
+}
+
+
+.menu_superior a:hover {
+   color: #ffffff;
+   text-shadow: 0 0 8px #ffffff;
+}
+
+.presentacion h1 {
+   font-size: 2rem;
+   font-weight: 700;
+   color: #fff;
+
+}
+
+.texto_resaltado {
+   color: #ffffff;
+}
+
+.contenedor_formulario {
+   display: flex;
+   justify-content: center;
+}
+
+.formulario_registro {
+   background: rgba(255, 255, 255, 0.95);
+   width: 400px;
+   border-radius: 15px;
+   padding: 30px;
+   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+   color: #000;
+}
+
+.campo_formulario {
+   margin-bottom: 15px;
+}
+
+.etiqueta_campo {
+   font-weight: 600;
+   color: #003366;
+   display: block;
+   margin-bottom: 5px;
+}
+
+.entrada_texto, .lista_opciones {
+   width: 100%;
+   border-radius: 8px;
+   border: 1px solid #ccc;
+   padding: 10px;
+   font-size: 1rem;
+}
+
+.boton_contenedor {
+   margin-top: 15px;
+}
+
+.boton_guardar {
+   width: 100%;
+   background: linear-gradient(90deg, #007bff, #0048ff);
+   border: none;
+   border-radius: 8px;
+   font-weight: bold;
+   color: white;
+   padding: 10px;
+   transition: 0.3s;
+}
+
+.boton_guardar:hover {
+   background: linear-gradient(90deg, #0048ff, #001f70);
+   transform: scale(1.05);
+}
+
+.redes_sociales a {
+   color: white;
+   margin: 0 10px;
+   font-size: 1.6em;
+   transition: 0.3s;
+}
+
+.redes_sociales a:hover {
+   transform: scale(1.2);
+   color: #00a6ff;
+}
+
+.pie_pagina {
+   font-size: 0.9rem;
+   color: #ddd;
+   text-align: center;
+   margin-bottom: 20px;
+}

@@ -1,0 +1,85 @@
+/* Fondo general */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #657cff, #000000, #ffffff);
+    background-size: 200% 200%;
+
+    color: #fff;
+}
+
+/* Animación del fondo */
+@keyframes fondo_animado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Contenedor principal */
+.contenedor_exito {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+/* Tarjeta */
+.tarjeta_exito {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    width: 90%;
+    max-width: 420px;
+    padding: 35px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.35);
+
+}
+
+/* Animación */
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Icono de éxito */
+.icono_exito {
+    font-size: 70px;
+    color: #28a745;
+    text-shadow: 0 0 10px #28a745;
+    margin-bottom: 20px;
+}
+
+/* Título */
+.titulo_exito {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Texto */
+.mensaje_exito {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+/* Botón */
+.boton_volver {
+    display: block;
+    background: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.boton_volver:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}

@@ -1,0 +1,159 @@
+.logo_superior {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.logo_superior img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-bottom: 3px solid #007bff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #657cff, #000000, #ffffff);
+    background-size: 200% 200%;
+
+}
+
+.contenedor_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.caja_login {
+    width: 350px;
+    border-radius: 20px;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.caja_login::before {
+    content: "\f007";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 50px;
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    padding: 20px;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.titulo_login h2 {
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+}
+
+.texto_azul {
+    color: #ffffff;
+}
+
+.form_control,
+.form_select {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.form_control:focus,
+.form_select:focus {
+    background: rgba(255, 255, 255, 0.3);
+    outline: none;
+    box-shadow: 0 0 5px #ffffff;
+}
+
+.form_control::placeholder {
+    color: #eee;
+}
+
+.btn_login {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn_login:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.link_registro {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.link_registro:hover {
+    text-decoration: underline;
+}
+
+.redes_sociales a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+}
+
+.redes_sociales a:hover {
+    transform: scale(1.2);
+}
+
+.pie_pagina {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes mover_degradado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.form_select {
+  position: relative;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
+}
+
+.form_select option {
+  background-color: #fff;
+  color: #000;
+  z-index: 999;
+}
+
+.caja_login {
+  overflow: visible;
+}

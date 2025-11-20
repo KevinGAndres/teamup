@@ -1,0 +1,163 @@
+body {
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   margin: 0;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background: linear-gradient(135deg, #657cff, #000, #fff);
+   background-size: 200% 200%;
+   color: #fff;
+}
+
+.encabezado {
+   width: 100%;
+   background: rgba(0, 0, 0, 0.5);
+   backdrop-filter: blur(10px);
+   padding: 10px 40px;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contenedor_encabezado {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.contenedor_logo {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.logo {
+   width: 70px;
+   border-radius: 50%;
+   filter: drop-shadow(0 0 8px #00a6ff);
+}
+
+.nombre_app {
+   font-size: 1.8rem;
+   font-weight: bold;
+   color: #fff;
+
+   margin: 0;
+}
+
+.menu_principal ul {
+   list-style: none;
+   display: flex;
+   gap: 25px;
+   margin: 0;
+   padding: 0;
+}
+
+.menu_principal a {
+   text-decoration: none;
+   color: #ffffff;
+   font-weight: 600;
+   transition: 0.3s;
+}
+
+.menu_principal a:hover {
+   color: #fff;
+   text-shadow: 0 0 8px #ffffff;
+}
+
+.seccion_bienvenida {
+   text-align: center;
+   margin-top: 60px;
+}
+
+.seccion_bienvenida h1 {
+   font-size: 2rem;
+   color: #fff;
+   text-shadow: 0 0 10px #007bff;
+}
+
+.resaltado {
+   color: #ffffff;
+}
+
+.seccion_tarjetas {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 40px;
+   margin: 60px 0;
+}
+
+.tarjeta_torneo {
+   width: 280px;
+   background: rgba(255, 255, 255, 0.9);
+   border-radius: 15px;
+   overflow: hidden;
+   text-align: center;
+   color: #000;
+   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+   transition: 0.3s;
+}
+
+.tarjeta_torneo:hover {
+   transform: translateY(-8px);
+   box-shadow: 0 10px 30px rgba(0, 100, 255, 0.4);
+}
+
+.imagen_tarjeta {
+   width: 100%;
+   height: 150px;
+   object-fit: cover;
+   border-bottom: 3px solid #007bff;
+}
+
+.contenido_tarjeta {
+   padding: 20px;
+}
+
+.contenido_tarjeta h4 {
+   font-size: 1.2rem;
+   font-weight: bold;
+   color: #003366;
+}
+
+.contenido_tarjeta p {
+   font-size: 0.9rem;
+   color: #333;
+}
+
+.boton_entrar {
+   display: inline-block;
+   margin-top: 12px;
+   background: linear-gradient(90deg, #007bff, #0048ff);
+   border: none;
+   border-radius: 8px;
+   font-weight: bold;
+   color: white;
+   padding: 8px 20px;
+   text-decoration: none;
+   transition: 0.3s;
+}
+
+.boton_entrar:hover {
+   background: linear-gradient(90deg, #0048ff, #001f70);
+   transform: scale(1.05);
+}
+
+.redes_sociales a {
+   color: white;
+   margin: 0 10px;
+   font-size: 1.6em;
+   transition: 0.3s;
+}
+
+.redes_sociales a:hover {
+   transform: scale(1.2);
+   color: #00a6ff;
+}
+
+.pie_pagina {
+   color: #ddd;
+   font-size: 0.9em;
+   text-align: center;
+   margin-bottom: 20px;
+}

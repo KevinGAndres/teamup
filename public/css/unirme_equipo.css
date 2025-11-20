@@ -1,0 +1,133 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #657cff, #000000, #ffffff);
+  background-size: 200% 200%;
+  animation: moverDegradado 8s ease infinite;
+  color: #fff;
+}
+
+.encabezado {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 10px 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contenedor_encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bloque_logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 70px;
+  height: auto;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 8px #00a6ff);
+}
+
+.titulo_principal {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 8px #007bff;
+  margin: 0;
+}
+
+.lista_menu {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.lista_menu a {
+  text-decoration: none !important;
+  color: #ffffff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.lista_menu a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px #00a6ff;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+
+}
+
+.nombre_app {
+  color: #ffffff;
+}
+
+.tarjeta_equipo {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  color: #000;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta_equipo:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 100, 255, 0.4);
+}
+
+.imagen_equipo {
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.boton_solicitud {
+  background: linear-gradient(90deg, #007bff, #0048ff);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  padding: 8px 0;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.boton_solicitud:hover {
+  background: linear-gradient(90deg, #0048ff, #001f70);
+  transform: scale(1.05);
+}
+
+.redes_sociales a {
+  color: white;
+  margin: 0 10px;
+  font-size: 1.6em;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.redes_sociales a:hover {
+  transform: scale(1.2);
+  color: #00a6ff;
+}
+
+.pie_pagina {
+  font-size: 0.9rem;
+  color: #ddd;
+  text-align: center;
+  margin-bottom: 20px;
+}

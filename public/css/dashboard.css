@@ -1,0 +1,163 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #657cff, #000000, #ffffff);
+    background-size: 200% 200%;
+    color: white;
+}
+
+/* ENCABEZADO */
+.encabezado {
+    width: 100%;
+    background: rgba(0,0,0,0.55);
+    padding: 15px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.contenedor_encabezado {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 65px;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 10px #007bff);
+}
+
+.menu {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.menu a:hover {
+    text-shadow: 0 0 10px #00a6ff;
+}
+
+/* TITULO */
+.titulo_dashboard {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.titulo_dashboard h2 {
+    font-size: 2.3rem;
+    text-shadow: 0 0 12px #007bff;
+}
+
+/* TARJETAS */
+.contenedor_estadisticas {
+    margin: 60px auto;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1300px;
+}
+
+.tarjeta {
+    width: 280px;
+    background: rgba(255,255,255,0.9);
+    padding: 25px;
+    border-radius: 15px;
+    color: #000;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+    transition: .3s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0,100,255,0.4);
+}
+
+.icono {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.numero {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #003366;
+}
+
+.btn_detalle {
+    margin-top: 10px;
+    display: block;
+    background: #007bff;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btn_detalle:hover {
+    background: #0048ff;
+}
+
+/* GRAFICOS */
+.seccion_graficos {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.grafico {
+    width: 500px;
+    background: rgba(255,255,255,0.9);
+    padding: 25px;
+    border-radius: 15px;
+    color: #000;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+}
+
+.placeholder {
+    height: 200px;
+    background: #ddd;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+/* PIE */
+.pie {
+    color: #ddd;
+    text-align: center;
+    margin-top: 50px;
+    padding-bottom: 20px;
+}
+
+.redes_sociales {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.redes_sociales a {
+    color: white !important;     /* Blanco siempre */
+    margin: 0 12px;
+    font-size: 1.9rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.redes_sociales a:hover {
+    transform: scale(1.2);
+    color: #00a6ff !important;   /* Azul TeamUp al pasar */
+}
