@@ -18,7 +18,7 @@
         </div>
 
         <ul class="menu_usuario">
-            <li><a href="{{ route('login.form') }}">Volver</a></li>
+
             <li><a href="{{ route('registro') }}">Tipo registro</a></li>
         </ul>
     </div>
@@ -35,7 +35,7 @@
     <div class="contenedor_formulario_usuario">
 
         {{-- FORMULARIO CORRECTO --}}
-        <form action="{{ route('registro.usuario.store') }}" method="POST" class="formulario_usuario">
+        <form action="{{ route('registro_usuario.store') }}" method="POST" class="formulario_usuario">
             @csrf
 
             <label class="etiqueta_dato">Tipo Documento</label>
@@ -57,7 +57,9 @@
             <input type="text" name="apellido" class="campo_dato" required>
 
             <label class="etiqueta_dato">Correo</label>
-            <input type="email" name="correo" class="campo_dato" required>
+            <input type="email" name="email" class="campo_dato" required>
+
+
 
             <label class="etiqueta_dato">Teléfono</label>
             <input type="number" name="telefono" class="campo_dato" required>

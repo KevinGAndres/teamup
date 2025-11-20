@@ -23,12 +23,12 @@
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
 
-                <form action="{{ route('login.process') }}" method="POST">
+                <form action="{{ route('login_process') }}" method="POST">
 
                 @csrf
 
-                <input type="email" name="correo" class="form_control" placeholder="Correo electrónico" required>
-                <input type="password" name="contrasena" class="form_control" placeholder="Contraseña" required>
+                <input type="email" name="email" class="form_control" placeholder="Correo electrónico">
+                <input type="password" name="password" class="form_control" placeholder="Contraseña" required>
 
                 <button type="submit" class="btn_login">Iniciar sesión</button>
 

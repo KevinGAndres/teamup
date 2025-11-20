@@ -13,35 +13,39 @@ class AuthController extends Controller
     //  LOGIN
     // ==============================
 
+   
     public function showLoginForm()
-    {
-        return view('login');
+{
+    return view('login');
+}
+
+public function login(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'contrasena' => 'required'
+    ]);
+    //dd($request->all());
+
+  
+    
+$credentials = [
+    'email' => $request->email,
+    'password' => $request->password
+
+    
+];
+
+ dd(Auth::attempt($credentials), $credentials);
+
+
+    if (Auth::attempt($credentials)) {
+        return redirect()->route('principal');
+    } else {
+        return back()->with('error', 'Correo o contraseña incorrectos.');
     }
+}
 
-    public function login(Request $request)
-    {
-        $request->validate([
-            'correo' => 'required|email',
-            'contrasena' => 'required'
-        ]);
-
-        $credentials = [
-            'correo' => $request->correo,
-            'password' => $request->contrasena
-        ];
-
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('principal');
-        } else {
-            return back()->with('error', 'Correo o contraseña incorrectos.');
-        }
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('login.form');
-    }
 
 
     // ==============================
@@ -58,38 +62,44 @@ class AuthController extends Controller
     //  REGISTRO DE USUARIO
     // ==============================
 
+    
     public function viewRegistroUsuario()
     {
-        return view('registro_usuario');
+        return view('registro_usuarios');
     }
+
+    
 
     public function storeUsuario(Request $request)
     {
         $request->validate([
-            'tipodoc' => 'required',
-            'documento' => 'required',
-            'nombre' => 'required',
-            'apellido' => 'required',
-            'correo' => 'required|email|unique:users,correo',
-            'telefono' => 'required',
-            'genero' => 'required',
-            'contrasena' => 'required|min:6|confirmed'
-        ]);
+    'tipodoc' => 'required',
+    'documento' => 'required',
+    'nombre' => 'required',
+    'apellido' => 'required',
+    'email' => 'required|email|unique:users,email',
+    'telefono' => 'required',
+    'genero' => 'required',
+    'contrasena' => 'required|min:6|confirmed'
+]);
 
+  // dd($request->all());
         User::create([
-            'tipodoc' => $request->tipodoc,
-            'documento' => $request->documento,
-            'nombre' => $request->nombre,
-            'apellido' => $request->apellido,
-            'correo' => $request->correo,
-            'telefono' => $request->telefono,
-            'genero' => $request->genero,
-            'password' => Hash::make($request->contrasena),
-            'rol' => 'usuario'
-        ]);
+    'tipodoc' => $request->tipodoc,
+    'documento' => $request->documento,
+    'nombre' => $request->nombre,
+    'apellido' => $request->apellido,
+    'email' => $request->email,
+    'telefono' => $request->telefono,
+    'genero' => $request->genero,
+    'password' => Hash::make($request->contrasena),
+]);
 
-        return redirect()->route('registro.exitoso');
-    }
+       return redirect()->route('registro_exitoso')->with('success', 'Usuario registrado correctamente.');
+}
+   
+
+    
 
 
     // ==============================
@@ -107,7 +117,7 @@ class AuthController extends Controller
             'tipodoc' => 'required',
             'documento' => 'required',
             'nombre' => 'required',
-            'correo' => 'required|email|unique:users,correo',
+            'correo' => 'required|email|unique:users,email',
             'telefono' => 'required',
             'contrasena' => 'required|min:6|confirmed'
         ]);
@@ -117,13 +127,16 @@ class AuthController extends Controller
             'documento' => $request->documento,
             'nombre' => $request->nombre,
             'apellido' => '',
-            'correo' => $request->correo,
+            'email' => $request->correo,
             'telefono' => $request->telefono,
             'genero' => '',
             'password' => Hash::make($request->contrasena),
             'rol' => 'admin'
         ]);
 
-        return redirect()->route('registro.exitoso');
+        return redirect()->route('registro_exitoso');
+
     }
+
+    
 }

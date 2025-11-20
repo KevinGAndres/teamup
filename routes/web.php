@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JugadorController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\TorneoController;
+use App\Http\Controllers\ComunicacionController;
 use App\Http\Controllers\AdminController;
 
 /*
@@ -13,50 +14,65 @@ use App\Http\Controllers\AdminController;
 |--------------------------------------------------------------------------
 */
 
+// Página de login (ruta principal)
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
+// (Opcional) que /login también muestre el formulario
+Route::get('/login', [AuthController::class, 'showLoginForm']);
+
+// Procesar el formulario de login (COINCIDE con tu Blade: route('login.process'))
 Route::post('/login', [AuthController::class, 'login'])->name('login_process');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Logout (recomendado que sea POST)
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+
+Route::post('/login', [AuthController::class, 'login'])->name('login_process');
+
+
+Route::view('/principal', 'principal')->name('principal');
 
 
 /*
 |--------------------------------------------------------------------------
-| REGISTRO GENERAL
+| REGISTRO
 |--------------------------------------------------------------------------
 */
 
+// En tu Blade usas route('registro') → esta ruta lo cubre
 Route::get('/registro', [AuthController::class, 'viewRegistro'])->name('registro');
 
 Route::get('/registro/usuario', [AuthController::class, 'viewRegistroUsuario'])->name('registro_usuario');
-Route::post('/registro/usuario', [AuthController::class, 'storeUsuario'])->name('registro_usuario_store');
+Route::post('/registro/usuario', [AuthController::class, 'storeUsuario'])->name('registro_usuario.store');
 
 Route::get('/registro/admin', [AuthController::class, 'viewRegistroAdmin'])->name('registro_admin');
-Route::post('/registro/admin', [AuthController::class, 'storeAdmin'])->name('registro_admin_store');
+Route::post('/registro/admin', [AuthController::class, 'storeAdmin'])->name('registro_admin.store');
 
-Route::get('/registro-exitoso', function () {
+
+Route::get('/registro/exitoso', function () {    
     return view('registro_exitoso');
 })->name('registro_exitoso');
 
 
-/*
-|--------------------------------------------------------------------------
-| PRINCIPAL
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/principal', function () {
-    return view('principal');
-})->name('principal');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login_form');
 
 
 /*
 |--------------------------------------------------------------------------
-| GESTIÓN DE USUARIOS Y EQUIPOS
+| PÁGINA PRINCIPAL (dashboard después de login)
 |--------------------------------------------------------------------------
 */
 
-Route::get('/gestion-equipos', function () {
-    return view('gestion_equipo');
-})->name('gestion_equipos');
+Route::get('/principal', fn () => view('principal'))->name('principal');
+
+
+/*
+|--------------------------------------------------------------------------
+| GESTIÓN EQUIPO / JUGADOR
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/gestion/equipos', fn () => view('gestion_equipo'))->name('gestion_equipos');
 
 
 /*
@@ -66,22 +82,22 @@ Route::get('/gestion-equipos', function () {
 */
 
 Route::get('/jugador/registro', [JugadorController::class, 'create'])->name('jugador_registro');
-Route::post('/jugador/registro', [JugadorController::class, 'store'])->name('jugador_store');
+Route::post('/jugador/registro', [JugadorController::class, 'store'])->name('jugador.store');
 
-Route::get('/jugador/buscar', [JugadorController::class, 'buscar'])->name('buscar_jugador');
+Route::get('/jugador/buscar', [JugadorController::class, 'buscar'])->name('jugador_buscar');
 
 
 /*
 |--------------------------------------------------------------------------
-| EQUIPOS
+| EQUIPO
 |--------------------------------------------------------------------------
 */
 
-Route::get('/equipo/crear', [EquipoController::class, 'create'])->name('crear_equipo');
-Route::post('/equipo/crear', [EquipoController::class, 'store'])->name('guardar_equipo');
+Route::get('/equipo/crear', [EquipoController::class, 'create'])->name('equipo_create');
+Route::post('/equipo/crear', [EquipoController::class, 'store'])->name('equipo.store');
 
-Route::get('/equipo/unirme', [EquipoController::class, 'unirme'])->name('unirme_equipo');
-Route::post('/equipo/solicitud/{id}', [EquipoController::class, 'enviarSolicitud'])->name('solicitud_equipo');
+Route::get('/equipo/unirme', [EquipoController::class, 'unirme'])->name('equipo_unirme');
+Route::post('/equipo/solicitud/{id}', [EquipoController::class, 'enviarSolicitud'])->name('equipo.solicitud');
 
 
 /*
@@ -91,10 +107,10 @@ Route::post('/equipo/solicitud/{id}', [EquipoController::class, 'enviarSolicitud
 */
 
 Route::get('/torneos', [TorneoController::class, 'index'])->name('torneos_inicio');
-Route::get('/torneos/crear', [TorneoController::class, 'create'])->name('crear_torneo');
-Route::post('/torneos/crear', [TorneoController::class, 'store'])->name('guardar_torneo');
-
-Route::get('/torneos/buscar', [TorneoController::class, 'buscar'])->name('buscar_torneo');
+Route::get('/torneos', [TorneoController::class, 'index'])->name('torneo.index');
+Route::get('/torneos/crear', [TorneoController::class, 'create'])->name('torneo_create');
+Route::post('/torneos/crear', [TorneoController::class, 'store'])->name('torneo.store');
+Route::get('/torneos/buscar', [TorneoController::class, 'buscar'])->name('torneo_buscar');
 
 
 /*
@@ -103,9 +119,7 @@ Route::get('/torneos/buscar', [TorneoController::class, 'buscar'])->name('buscar
 |--------------------------------------------------------------------------
 */
 
-Route::get('/amistoso', function () {
-    return view('amistoso');
-})->name('amistoso');
+Route::get('/amistoso', fn () => view('amistoso'))->name('amistoso');
 
 
 /*
@@ -114,9 +128,8 @@ Route::get('/amistoso', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/comunicacion', function () {
-    return view('comunicacion');
-})->name('comunicacion');
+// Si algún día usas ComunicacionController, lo cambias aquí
+Route::get('/comunicacion', fn () => view('comunicacion'))->name('comunicacion');
 
 
 /*
@@ -125,4 +138,4 @@ Route::get('/comunicacion', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard_admin');
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');

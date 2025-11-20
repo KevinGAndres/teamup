@@ -31,4 +31,10 @@ class TorneoController extends Controller
         $torneos = Torneo::all();
         return view('buscar_torneo', compact('torneos'));
     }
+
+    public function index()
+    {
+        // Aquí puedes retornar una vista de inicio de torneos
+        return view('torneos_inicio');
+    }
 }

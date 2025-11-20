@@ -13,20 +13,20 @@ class User extends Authenticatable
         'documento',
         'nombre',
         'apellido',
-        'correo',
+        'email',
         'telefono',
         'genero',
-        'contrasena',
-        'rol'
+        'password'
+        
     ];
 
     protected $hidden = [
-        'contrasena'
+        'password'
     ];
 
     public function getAuthPassword()
     {
-        return $this->contrasena;
+        return $this->password;
     }
 
     public function jugador()
