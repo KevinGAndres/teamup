@@ -21,7 +21,12 @@
 
         <nav>
             <ul class="menu_sesion">
-                <li><a href="{{ route('logout') }}">Cerrar Sesión</a></li>
+ <li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-link p-0 text-decoration-none">Cerrar Sesión</button>
+                    </form>
+                </li>
             </ul>
         </nav>
 
@@ -62,7 +67,7 @@
         <div class="contenido_tarjeta text-center">
             <h4>Administrador</h4>
             <p>Controla torneos, usuarios, estadísticas y configuraciones.</p>
-            <a href="{{ route('admin_dashboard') }}" class="btn btn_modulo">Entrar</a>
+           <a href="{{ route('dashboard') }}" class="btn btn_modulo">Entrar</a>
         </div>
     </div>
 

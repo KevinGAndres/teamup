@@ -2,39 +2,79 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Torneo;
 use Illuminate\Http\Request;
+use App\Models\Torneo;
 
 class TorneoController extends Controller
 {
+    public function index()
+    {
+        $torneos = Torneo::all();
+        return view('torneos.index', compact('torneos'));
+    }
+
     public function create()
     {
-        return view('crear_torneo');
+        return view('torneos.create');
     }
 
     public function store(Request $request)
     {
-        Torneo::create([
-            'nombre' => $request->nombreTorneo,
-            'deporte' => $request->deporte,
-            'cantidad_equipos' => $request->cantidadEquipos,
-            'formato' => $request->formato,
-            'lugar' => $request->lugar,
-            'premios' => $request->premios
+        $request->validate([
+            'nombre'         => 'required|string|max:255',
+            'deporte'        => 'required|string|max:255',
+            'cantidad_equipos'=> 'required|integer|min:2',
+            'lugar'          => 'required|string|max:255',
+            'formato'        => 'nullable|string|max:255',
+            'premios'        => 'nullable|string'
         ]);
 
-        return back()->with('success', 'Torneo registrado correctamente.');
+        Torneo::create([
+            'nombre'           => $request->nombre,
+            'deporte'          => $request->deporte,
+            'cantidad_equipos' => $request->cantidad_equipos,
+            'formato'          => $request->formato,
+            'lugar'            => $request->lugar,
+            'premios'          => $request->premios
+        ]);
+
+        return redirect()->route('torneos.index')->with('success', 'Torneo creado correctamente.');
     }
 
-    public function buscar()
+    public function edit($id)
     {
-        $torneos = Torneo::all();
-        return view('buscar_torneo', compact('torneos'));
+        $torneo = Torneo::findOrFail($id);
+        return view('torneos.edit', compact('torneo'));
     }
 
-    public function index()
+    public function update(Request $request, $id)
     {
-        // Aquí puedes retornar una vista de inicio de torneos
-        return view('torneos_inicio');
+        $request->validate([
+            'nombre'           => 'required|string|max:255',
+            'deporte'          => 'required|string|max:255',
+            'cantidad_equipos' => 'required|integer|min:2',
+            'lugar'            => 'required|string|max:255',
+            'formato'          => 'nullable|string|max:255',
+            'premios'          => 'nullable|string'
+        ]);
+
+        $torneo = Torneo::findOrFail($id);
+        $torneo->update([
+            'nombre'           => $request->nombre,
+            'deporte'          => $request->deporte,
+            'cantidad_equipos' => $request->cantidad_equipos,
+            'formato'          => $request->formato,
+            'lugar'            => $request->lugar,
+            'premios'          => $request->premios
+        ]);
+
+        return redirect()->route('torneos.index')->with('success', 'Torneo actualizado correctamente.');
+    }
+
+    public function destroy($id)
+    {
+        $torneo = Torneo::findOrFail($id);
+        $torneo->delete();
+        return redirect()->route('torneos.index')->with('success', 'Torneo eliminado correctamente.');
     }
 }

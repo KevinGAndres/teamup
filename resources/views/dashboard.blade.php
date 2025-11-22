@@ -2,85 +2,49 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard Admin - TeamUp</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TeamUp</title>
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-
 <body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="{{ asset('imagenes/logo_final.png') }}" alt="TeamUp">
+                <h2>TeamUp</h2>
+            </div>
+            <nav class="menu">
+                <a href="{{ route('principal') }}"><i class="fas fa-home"></i> Inicio</a>
+                <a href="{{ route('gestion_equipos') }}"><i class="fas fa-users"></i> Equipos</a>
+                <a href="{{ route('torneos_inicio') }}"><i class="fas fa-trophy"></i> Torneos</a>
+                <a href="{{ route('amistoso') }}"><i class="fas fa-handshake"></i> Amistosos</a>
+                <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+            </nav>
+        </aside>
 
-<header class="encabezado">
-    <div class="contenedor_encabezado">
+        <main class="contenido">
+            <h1>Bienvenido al Panel de Control</h1>
+            <div class="estadisticas">
+                <div class="card">
+                    <h3>Usuarios Registrados</h3>
+                    <p>120</p>
+                </div>
+                <div class="card">
+                    <h3>Equipos</h3>
+                    <p>45</p>
+                </div>
+                <div class="card">
+                    <h3>Torneos Activos</h3>
+                    <p>25</p>
+                </div>
+            </div>
 
-        <div class="logo_titulo">
-            <img src="{{ asset('imagenes/logo_final.png') }}" class="logo">
-            <h1>TeamUp</h1>
-        </div>
-
-        <nav>
-            <ul class="menu">
-                <li><a href="{{ route('principal') }}">Volver</a></li>
-                <li><a href="{{ route('logout') }}">Cerrar Sesión</a></li>
-            </ul>
-        </nav>
-
+            <div class="grafico">
+                <h2>Resumen Gráfico</h2>
+                <img src="{{ asset('storage/grafico_teamup_actualizado.png') }}" alt="Gráfico">
+            </div>
+        </main>
     </div>
-</header>
-
-<section class="titulo_dashboard">
-    <h2>Panel del Administrador</h2>
-    <p>Vista general del sistema y estadísticas globales.</p>
-</section>
-
-<section class="contenedor_estadisticas">
-
-    <div class="tarjeta">
-        <i class="fa-solid fa-user icono"></i>
-        <h3>Usuarios Registrados</h3>
-        <p class="numero">{{ $usuarios ?? 0 }}</p>
-        <a href="#" class="btn_detalle">Ver detalles</a>
-    </div>
-
-    <div class="tarjeta">
-        <i class="fa-solid fa-people-group icono"></i>
-        <h3>Equipos Activos</h3>
-        <p class="numero">{{ $equipos ?? 0 }}</p>
-        <a href="#" class="btn_detalle">Gestionar</a>
-    </div>
-
-    <div class="tarjeta">
-        <i class="fa-solid fa-trophy icono"></i>
-        <h3>Torneos en Curso</h3>
-        <p class="numero">{{ $torneos ?? 0 }}</p>
-        <a href="#" class="btn_detalle">Ver torneos</a>
-    </div>
-
-</section>
-
-<section class="seccion_graficos">
-
-    <div class="grafico">
-        <h4>Actividad Reciente</h4>
-        <div class="placeholder">Gráfico próximamente…</div>
-    </div>
-
-    <div class="grafico">
-        <h4>Crecimiento de Usuarios</h4>
-        <div class="placeholder">Gráfico próximamente…</div>
-    </div>
-
-</section>
-
-<footer class="pie">
-    © 2025 TeamUp — Panel Administrador
-</footer>
-
-<div class="redes_sociales text-center mt-4">
-    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-</div>
-
 </body>
 </html>

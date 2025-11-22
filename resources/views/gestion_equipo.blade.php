@@ -21,11 +21,18 @@
         <nav>
             <ul class="menu">
                 <li><a href="{{ route('principal') }}">Volver</a></li>
-                <li><a href="{{ route('logout') }}">Cerrar Sesión</a></li>
+                <li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-link p-0 text-decoration-none">Cerrar Sesión</button>
+                    </form>
+                </li> 
+
             </ul>
         </nav>
     </div>
 </header>
+
 
 <section class="bienvenida text-center mt-5">
     <h1><span>Gestión de Usuarios y Equipos</span></h1>
@@ -39,8 +46,8 @@
         <div class="card-body">
             <h4>Jugador</h4>
             <p>Consulta y actualiza tu perfil como jugador.</p>
-            <a href="{{ route('registro_jugador') }}" class="btn btn-modulo">Entrar</a>
-        </div>
+            <a href="{{ route('jugador_registro') }}" class="btn btn-modulo">Entrar</a>   
+             </div>
     </div>
 
     <div class="card modulo">
@@ -48,7 +55,7 @@
         <div class="card-body">
             <h4>Crear Equipo</h4>
             <p>Registra tu nuevo equipo.</p>
-            <a href="{{ route('crear_equipo') }}" class="btn btn-modulo">Entrar</a>
+            <a href="{{ route('equipo_create') }}" class="btn btn-modulo">Entrar</a>
         </div>
     </div>
 
@@ -57,7 +64,7 @@
         <div class="card-body">
             <h4>Unirme a un Equipo</h4>
             <p>Explora equipos disponibles.</p>
-            <a href="{{ route('unirme_equipo') }}" class="btn btn-modulo">Entrar</a>
+            <a href="{{ route('equipo_unirme') }}" class="btn btn-modulo">Entrar</a>
         </div>
     </div>
 
@@ -66,7 +73,7 @@
         <div class="card-body">
             <h4>Buscar Jugador</h4>
             <p>Consulta la lista de jugadores registrados.</p>
-            <a href="{{ route('buscar_jugador') }}" class="btn btn-modulo">Entrar</a>
+           <a href="{{ route('jugador_buscar') }}" class="btn btn-modulo">Entrar</a>
         </div>
     </div>
 

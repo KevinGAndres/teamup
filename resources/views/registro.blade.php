@@ -42,8 +42,18 @@
         <div class="contenido_tarjeta">
           <h4>Registrar Administrador</h4>
         </div>
+        
+    <a href="{{ route('registro_organizador') }}" class="enlace_tarjeta">
+      <div class="tarjeta_registro">
+        <img src="{{ asset('imagenes/nuevo_registro_admin2.png') }}" class="imagen_tarjeta">
+        <div class="contenido_tarjeta">
+          <h4>Registrar Organizador</h4>
+
+
       </div>
     </a>
+
+    
 
 </div>
 

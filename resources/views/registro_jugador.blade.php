@@ -21,9 +21,15 @@
 
       <nav class="menu_superior">
          <ul class="lista_menu">
-            <li><a href="{{ route('gestion_equipo') }}"><strong>Regresar</strong></a></li>
-            <li><a href="{{ route('logout') }}"><strong>Cerrar Sesión</strong></a></li>
-         </ul>
+     <li><a href="{{ route('gestion_equipos') }}"><strong>Regresar</strong></a></li>
+            <li>
+               <form action="{{ route('logout') }}" method="POST">
+                  @csrf
+                  <button type="submit" class="btn btn-link p-0 text-decoration-none"><strong>Cerrar Sesión</strong></button>
+               </form>
+            </li>
+
+      </ul>
       </nav>
 
    </div>
@@ -33,10 +39,9 @@
    <h1><span class="texto_resaltado">Registro de Jugador</span></h1>
    <p class="texto_resaltado">Completa tu perfil deportivo para unirte a TeamUp.</p>
 </section>
-
 <section class="contenedor_formulario mt-4">
 
-   <form action="{{ route('registro_jugador_store') }}" method="POST" class="formulario_registro">
+ <form action="{{ route('jugador.store') }}" method="POST" class="formulario_registro">
       @csrf
 
       <div class="campo_formulario">

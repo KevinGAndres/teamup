@@ -15,6 +15,7 @@ class JugadorController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'nombre' => 'required',
             'edad' => 'required|numeric',
@@ -25,8 +26,10 @@ class JugadorController extends Controller
             'telefono' => 'required'
         ]);
 
+        $usuarioId = Auth::id() ?? Auth::user()?->id_usuario;
+
         Jugador::create([
-            'id_usuario' => Auth::user()->id_usuario,
+            'id_usuario' => $usuarioId,
             'nombre' => $request->nombre,
             'edad' => $request->edad,
             'correo' => $request->correo,
@@ -36,8 +39,10 @@ class JugadorController extends Controller
             'telefono' => $request->telefono
         ]);
 
-        return redirect()->back()->with('success', 'Jugador registrado exitosamente.');
-    }
+         return redirect()
+            ->route('gestion_equipos')
+            ->with('success', 'Registro exitoso.');
+             }
 
     public function buscar()
     {

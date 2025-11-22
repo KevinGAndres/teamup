@@ -95,7 +95,7 @@
         Tus datos se han guardado correctamente en TeamUp.
     </div>
 
-    <a href="{{ route('gestion.equipo') }}" class="btn-volver">
+    <a href="{{ route('gestion_equipos') }}" class="btn-volver">
         Volver a Gestión de Equipo y Jugadores
     </a>
 </div>

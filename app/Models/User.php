@@ -6,8 +6,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    protected $primaryKey = 'id_usuario';
-
     protected $fillable = [
         'tipodoc',
         'documento',
@@ -17,13 +15,30 @@ class User extends Authenticatable
         'telefono',
         'genero',
         'password'
-        
     ];
 
     protected $hidden = [
         'password'
     ];
 
+
+
+    public function getAuthIdentifierName()
+    {
+        return array_key_exists('id', $this->attributes) ? 'id' : 'id_usuario';
+    }
+
+    public function getAuthIdentifier()
+    {
+        $key = $this->getAuthIdentifierName();
+        return $this->getAttribute($key);
+    }
+
+    public function getIdUsuarioAttribute(): ?int
+    {
+        return $this->attributes['id_usuario'] ?? $this->attributes['id'] ?? null;
+    }
+    
     public function getAuthPassword()
     {
         return $this->password;

@@ -20,8 +20,13 @@
 
         <nav class="barra_menu">
             <ul class="lista_menu">
-                <li><a href="{{ route('gestion_equipo') }}"><strong>Regresar</strong></a></li>
-                <li><a href="{{ route('logout') }}"><strong>Cerrar Sesión</strong></a></li>
+                 <li><a href="{{ route('gestion_equipos') }}"><strong>Regresar</strong></a></li>
+                <li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-link p-0 text-decoration-none"><strong>Cerrar Sesión</strong></button>
+                    </form>
+                </li>
             </ul>
         </nav>
     </div>
@@ -32,6 +37,11 @@
     @if(session('success'))
         <div class="alert alert-success text-center fw-bold">{{ session('success') }}</div>
     @endif
+ @if(session('error'))
+        <div class="alert alert-danger text-center fw-bold">{{ session('error') }}</div>
+    @endif
+
+
 
     <div class="row justify-content-center g-4">
 
@@ -39,14 +49,19 @@
         <div class="col-md-4">
             <div class="tarjeta_equipo shadow">
 
-                <img src="{{ asset('storage/' . $equipo->foto) }}" class="imagen_equipo">
+    @if($equipo->logo)
+                <img src="{{ asset('storage/' . ($equipo->logo ?? '')) }}" class="imagen_equipo">
+
+                @else
+                    <img src="{{ asset('imagenes/logo_final.png') }}" class="imagen_equipo">
+                @endif 
 
                 <div class="contenido_tarjeta text-center">
                     <h5 class="nombre_equipo">{{ $equipo->nombre }}</h5>
                     <p><strong>Deporte:</strong> {{ $equipo->deporte }}</p>
                     <p><strong>Lugar:</strong> {{ $equipo->lugar }}</p>
 
-                    <form action="{{ route('solicitud_equipo', $equipo->id) }}" method="POST">
+                <form action="{{ route('equipo.solicitud', $equipo->id_equipo) }}" method="POST">
                         @csrf
                         <button class="boton_solicitud" type="submit">Enviar Solicitud</button>
                     </form>

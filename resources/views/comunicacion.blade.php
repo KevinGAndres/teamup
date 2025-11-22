@@ -21,7 +21,12 @@
         <nav>
             <ul class="menu">
                 <li><a href="{{ route('principal') }}">Volver</a></li>
-                <li><a href="{{ route('logout') }}">Cerrar Sesión</a></li>
+  <li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-link p-0 text-decoration-none">Cerrar Sesión</button>
+                    </form>
+                </li>
             </ul>
         </nav>
 

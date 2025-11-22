@@ -21,8 +21,13 @@
 
         <nav class="barra_menu">
             <ul class="lista_menu">
-                <li><a href="{{ route('gestion_torneos') }}"><strong>Regresar</strong></a></li>
-                <li><a href="{{ route('logout') }}"><strong>Cerrar Sesión</strong></a></li>
+         <li><a href="{{ route('torneos_inicio') }}"><strong>Regresar</strong></a></li>
+                <li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-link p-0 text-decoration-none"><strong>Cerrar Sesión</strong></button>
+                    </form>
+                </li>
             </ul>
         </nav>
 
@@ -36,12 +41,13 @@
 
 <section class="contenedor_formulario mt-5">
 
-    <form action="{{ route('crear_torneo_store') }}" method="POST" class="formulario shadow p-4 rounded">
+    <form action="{{ route('torneo.store') }}" method="POST" class="formulario shadow p-4 rounded">
+
         @csrf
 
         <div class="mb-3">
             <label class="etiqueta">Nombre del Torneo</label>
-            <input type="text" name="nombre" class="campo" required>
+            <input type="text" name="nombreTorneo" class="campo" required>
         </div>
 
         <div class="mb-3">
@@ -51,7 +57,7 @@
 
         <div class="mb-3">
             <label class="etiqueta">Cantidad Equipos</label>
-            <input type="number" name="cantidad" class="campo" min="2" required>
+            <input type="number" name="cantidadEquipos" class="campo" min="2" required>
         </div>
 
         <div class="mb-3">

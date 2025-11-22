@@ -13,9 +13,11 @@ class SolicitudController extends Controller
     {
         $equipo = Equipo::findOrFail($id_equipo);
 
-        SolicitudEquipo::create([
+        
+        
+       SolicitudEquipo::create([
             'id_equipo' => $id_equipo,
-            'id_usuario' => Auth::user()->id_usuario,
+            'id_usuario' => Auth::id(),
             'estado' => 'pendiente'
         ]);
 

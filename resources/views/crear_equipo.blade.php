@@ -21,8 +21,13 @@
 
         <nav class="barra_menu">
             <ul class="lista_menu">
-                <li><a href="{{ route('gestion_equipo') }}"><strong>Regresar</strong></a></li>
-                <li><a href="{{ route('logout') }}"><strong>Cerrar Sesión</strong></a></li>
+         <li><a href="{{ route('gestion_equipos') }}"><strong>Regresar</strong></a></li>
+                <li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-link p-0 text-decoration-none"><strong>Cerrar Sesión</strong></button>
+                    </form>
+                </li>
             </ul>
         </nav>
     </div>
@@ -34,7 +39,7 @@
 </section>
 
 <section class="contenedor_formulario mt-4">
-    <form action="{{ route('crear_equipo_store') }}" method="POST" enctype="multipart/form-data" class="formulario shadow p-4 rounded">
+  <form action="{{ route('equipo.store') }}" method="POST" enctype="multipart/form-data" class="formulario shadow p-4 rounded">
         @csrf
 
         <div class="mb-3">
@@ -49,7 +54,8 @@
 
         <div class="mb-3">
             <label class="etiqueta">Integrantes</label>
-            <textarea name="integrantes" class="campo" rows="3" required></textarea>
+            <input type="number" name="integrantes" class="campo" min="1" required>
+
         </div>
 
         <div class="mb-3">
@@ -71,10 +77,9 @@
             <label class="etiqueta">Lugar</label>
             <input type="text" name="lugar" class="campo" required>
         </div>
-
         <div class="mb-4">
-            <label class="etiqueta">Foto del Equipo</label>
-            <input type="file" name="foto" class="campo" accept="image/*">
+          <label class="etiqueta">Logo del Equipo</label>
+            <input type="file" name="logo" class="campo" accept="image/*">
         </div>
 
         <div class="text-center">

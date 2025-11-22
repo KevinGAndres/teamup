@@ -22,9 +22,14 @@
 
         <nav>
             <ul class="menu_amistoso">
-                <li><a href="{{ route('gestion_torneos') }}"><strong>REGRESAR</strong></a></li>
-                <li><a href="{{ route('logout') }}"><strong>CERRAR SESIÓN</strong></a></li>
-            </ul>
+                <li><a href="{{ route('torneos_inicio') }}"><strong>REGRESAR</strong></a></li>
+                <li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-link p-0 text-decoration-none"><strong>CERRAR SESIÓN</strong></button>
+                    </form>
+                </li>
+        </ul>
         </nav>
 
     </div>
@@ -37,8 +42,7 @@
 
 <section class="contenedor_formulario mt-5">
 
-    <form action="{{ route('amistoso_store') }}" method="POST" class="formulario_amistoso sombra_amistoso p-4 rounded">
-        @csrf
+
 
         <div class="mb-3">
             <label class="etiqueta_campo">Nombre del Partido</label>

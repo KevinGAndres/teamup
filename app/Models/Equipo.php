@@ -14,6 +14,7 @@ class Equipo extends Model
         'creador_id',
         'nombre',
         'deporte',
+        'integrantes',
         'correo',
         'genero',
         'lugar',
