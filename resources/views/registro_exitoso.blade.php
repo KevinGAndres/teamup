@@ -21,7 +21,7 @@
 
         <p class="mensaje_exito">Tu cuenta ha sido creada correctamente.</p>
 
-        <a href="{{ route('login_form') }}" class="boton_volver">
+        <a href="{{ route('login') }}" class="boton_volver">
             Volver al Login
         </a>
 

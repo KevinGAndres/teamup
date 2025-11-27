@@ -9,36 +9,66 @@ class TorneoController extends Controller
 {
     public function index()
     {
-        $torneos = Torneo::all();
-        return view('torneos.index', compact('torneos'));
+return view('torneos_inicio');
+    }
+
+    public function inicio()
+    {
+        return $this->index();
+    }
+
+    public function buscar(Request $request)
+    {
+        $query = $request->get('query');
+
+        $torneos = Torneo::when($query, function ($q) use ($query) {
+            $q->where('nombre', 'like', "%{$query}%")
+                ->orWhere('deporte', 'like', "%{$query}%")
+                ->orWhere('lugar', 'like', "%{$query}%");
+        })->get();
+
+        return view('buscar_torneo', [
+            'torneos' => $torneos,
+            'query'   => $query,
+        ]);
     }
 
     public function create()
     {
-        return view('torneos.create');
+        return view('crear_torneo');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nombre'         => 'required|string|max:255',
-            'deporte'        => 'required|string|max:255',
-            'cantidad_equipos'=> 'required|integer|min:2',
-            'lugar'          => 'required|string|max:255',
-            'formato'        => 'nullable|string|max:255',
-            'premios'        => 'nullable|string'
+            'nombreTorneo'    => 'required|string|max:255',
+            'deporte'         => 'required|string|max:255',
+            'cantidadEquipos' => 'required|integer|min:2',
+            'lugar'           => 'required|string|max:255',
+            'formato'         => 'nullable|string|max:255',
+            'premios'         => 'nullable|string'
         ]);
 
         Torneo::create([
-            'nombre'           => $request->nombre,
+            'nombre'           => $request->input('nombreTorneo'),
             'deporte'          => $request->deporte,
-            'cantidad_equipos' => $request->cantidad_equipos,
+            'cantidad_equipos' => $request->input('cantidadEquipos'),
             'formato'          => $request->formato,
             'lugar'            => $request->lugar,
             'premios'          => $request->premios
         ]);
 
-        return redirect()->route('torneos.index')->with('success', 'Torneo creado correctamente.');
+         return redirect()->route('torneos_inicio')->with('success', 'Torneo creado correctamente.');
+    }
+
+    public function show($id)
+    {
+        $torneo = Torneo::findOrFail($id);
+
+                    return view('crear_torneo', [
+           'torneo' => $torneo,
+        ]);
+ 
     }
 
     public function edit($id)
@@ -50,9 +80,9 @@ class TorneoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombre'           => 'required|string|max:255',
+            'nombreTorneo'     => 'sometimes|required|string|max:255',
             'deporte'          => 'required|string|max:255',
-            'cantidad_equipos' => 'required|integer|min:2',
+            'cantidadEquipos'  => 'required|integer|min:2',
             'lugar'            => 'required|string|max:255',
             'formato'          => 'nullable|string|max:255',
             'premios'          => 'nullable|string'
@@ -60,9 +90,9 @@ class TorneoController extends Controller
 
         $torneo = Torneo::findOrFail($id);
         $torneo->update([
-            'nombre'           => $request->nombre,
+            'nombre'           => $request->input('nombreTorneo', $torneo->nombre),
             'deporte'          => $request->deporte,
-            'cantidad_equipos' => $request->cantidad_equipos,
+            'cantidad_equipos' => $request->input('cantidadEquipos'),
             'formato'          => $request->formato,
             'lugar'            => $request->lugar,
             'premios'          => $request->premios

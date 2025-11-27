@@ -23,7 +23,9 @@
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
 
-                <form action="{{ route('login_process') }}" method="POST">
+            <form method="POST" action="{{ route('login') }}">
+
+
 
                 @csrf
 

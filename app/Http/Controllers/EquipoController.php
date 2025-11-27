@@ -11,18 +11,27 @@ class EquipoController extends Controller
     public function index()
     {
         $equipos = Equipo::all();
-        return view('equipos.index', compact('equipos'));
+        return view('unirme_equipo', compact('equipos'));
     }
 
     public function show($id)
     {
         $equipo = Equipo::findOrFail($id);
-        return view('equipos.show', compact('equipo'));
+        return view('unirme_equipo', [
+            'equipos' => collect([$equipo]),
+        ]);
+    }
+
+    public function unirme()
+    {
+        $equipos = Equipo::all();
+
+        return view('unirme_equipo', compact('equipos'));
     }
 
     public function create()
     {
-        return view('equipos.create');
+         return view('crear_equipo');
     }
 
     public function store(Request $request)
@@ -36,13 +45,13 @@ class EquipoController extends Controller
             'correo'      => 'required|email|max:255',
             'genero'      => 'required|string|max:50',
             'lugar'       => 'required|string|max:255',
-            'foto'        => 'nullable|image'
+            'logo'        => 'nullable|image'
         ]);
 
         $logo = null;
-        if ($request->hasFile('foto')) {
-            $logo = $request->file('foto')->store('equipos', 'public');
-        }
+        if ($request->hasFile('logo')) {
+            $logo = $request->file('logo')->store('equipos', 'public');
+          }
 
         Equipo::create([
             'creador_id'      => $creadorId,
@@ -61,7 +70,7 @@ class EquipoController extends Controller
     public function edit($id)
     {
         $equipo = Equipo::findOrFail($id);
-        return view('equipos.edit', compact('equipo'));
+        return view('crear_equipo', compact('equipo'));
     }
 
     public function update(Request $request, $id)
@@ -75,7 +84,7 @@ class EquipoController extends Controller
             'correo'      => 'required|email|max:255',
             'genero'      => 'required|string|max:50',
             'lugar'       => 'required|string|max:255',
-            'foto'        => 'nullable|image'
+             'logo'        => 'nullable|image'
         ]);
 
         if ($request->hasFile('foto')) {
@@ -102,13 +111,11 @@ class EquipoController extends Controller
     }
 
     public function solicitud($id)
-    {
-        // lógica para que un jugador solicite unirse al equipo
-        // ejemplo genérico
+     {
+        if (Auth::user()?->rol !== 'jugador') {
+            return redirect()->back()->with('error', 'Solo los jugadores pueden enviar solicitudes.');
+        }
         return back()->with('success', 'Solicitud enviada correctamente.');
-    }
-    if (Auth::user()->rol !== 'jugador') {
-    return redirect()->back()->with('error', 'Solo los jugadores pueden enviar solicitudes.');
-}
-
-}
+    
+ }
+   }

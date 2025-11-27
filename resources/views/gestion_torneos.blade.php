@@ -47,7 +47,7 @@
       <div class="contenido_tarjeta text-center">
          <h4>Crear Torneo</h4>
          <p>Diseña y configura nuevos torneos.</p>
-         <a href="{{ route('torneo_create') }}" class="boton_entrar">Entrar</a>
+         <a href="{{ route('torneos.create') }}" class="boton_entrar">Entrar</a>
       </div>
    </div>
 

@@ -17,23 +17,30 @@ class AuthController extends Controller
 
         public function login(Request $request)
         {
-            $request->validate([
-                'email' => 'required|email',
-                'password' => 'required'
-        ]); 
-            $credentials = [
-                'email' => $request->email,
-                'password' => $request->password
-        ];
+            $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('principal');
-        }
-        return back()->with('error', 'Correo o contraseña incorrectos.');
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+$rol = Auth::user()->rol;
+
+if ($rol === 'admin') {
+    return redirect()->route('admin.dashboard');
+} elseif ($rol === 'organizador') {
+    return redirect()->route('principal');
+} elseif ($rol === 'usuario') {
+    return redirect()->route('principal');
+} else {
+    Auth::logout();
+    return redirect()->route('login')->with('error', 'Rol no reconocido.');
+}
     }
+
+    return back()->withErrors([
+        'email' => 'Las credenciales no coinciden con nuestros registros.',
+    ]);
     
 
+     }
 
         
 

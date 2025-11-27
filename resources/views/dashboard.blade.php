@@ -40,10 +40,7 @@
                 </div>
             </div>
 
-            <div class="grafico">
-                <h2>Resumen Gráfico</h2>
-                <img src="{{ asset('storage/grafico_teamup_actualizado.png') }}" alt="Gráfico">
-            </div>
+            
         </main>
     </div>
 </body>

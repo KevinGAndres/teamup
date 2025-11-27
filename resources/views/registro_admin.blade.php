@@ -20,7 +20,7 @@
         </div>
 
         <ul class="menu_admin">
-            <li><a href="{{ route('login_form') }}">Volver</a></li>
+            <li><a href="{{ route('login') }}">Volver</a></li>
             <li><a href="{{ route('registro') }}">Tipo registro</a></li>
         </ul>
 
@@ -33,45 +33,62 @@
         <h2>Completa los <span class="resaltado_admin">datos personales</span></h2>
     </div>
 
-    <img src="{{ asset('imagenes/admin_logo.png') }}" class="imagen_admin">
+    <img src="{{ asset('imagenes/nuevo_registro_admin.png') }}" class="imagen_admin">
 
     <div class="contenedor_formulario_admin">
 
-        <form action="{{ route('registro_admin_store') }}" method="POST" class="formulario_admin">
-            @csrf
+<form action="{{ route('registro_admin.store') }}" method="POST" class="formulario_admin">
+    @csrf
 
-            <label class="etiqueta_dato">Tipo Documento</label>
-            <select name="tipodoc" class="campo_dato" required>
-                <option value="">Seleccione...</option>
-                <option value="CC">Cédula de Ciudadanía</option>
-                <option value="TI">Tarjeta de Identidad</option>
-                <option value="CE">Cédula de Extranjería</option>
-                <option value="PA">Pasaporte</option>
-            </select>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
-            <label class="etiqueta_dato">Documento</label>
-            <input type="number" name="documento" class="campo_dato" required>
+    <label class="etiqueta_dato">Tipo Documento</label>
+    <select name="tipo_documento" class="campo_dato" required>
+        <option value="">Seleccione...</option>
+        <option value="CC">Cédula de Ciudadanía</option>
+        <option value="TI">Tarjeta de Identidad</option>
+        <option value="CE">Cédula de Extranjería</option>
+        <option value="PA">Pasaporte</option>
+    </select>
 
-            <label class="etiqueta_dato">Nombre</label>
-            <input type="text" name="nombre" class="campo_dato" required>
+    <label class="etiqueta_dato">Documento</label>
+    <input type="number" name="documento" class="campo_dato" required>
 
-            <label class="etiqueta_dato">Correo</label>
-            <input type="email" name="correo" class="campo_dato" required>
+    <label class="etiqueta_dato">Nombre</label>
+    <input type="text" name="nombre" class="campo_dato" required>
 
-            <label class="etiqueta_dato">Teléfono</label>
-            <input type="number" name="telefono" class="campo_dato" required>
+    <label class="etiqueta_dato">Apellido</label>
+    <input type="text" name="apellido" class="campo_dato" required>
 
-            <label class="etiqueta_dato">Contraseña</label>
-            <input type="password" name="contrasena" class="campo_dato" required>
 
-            <label class="etiqueta_dato">Confirmar Contraseña</label>
-            <input type="password" name="contrasena_confirmation" class="campo_dato" required>
+    <label class="etiqueta_dato">Correo</label>
+    <input type="email" name="correo" class="campo_dato" required>
 
-            <div class="botonera_admin">
-                <button type="submit">Registrar Administrador</button>
-            </div>
+    <label class="etiqueta_dato">Teléfono</label>
+    <input type="number" name="telefono" class="campo_dato" required>
 
-        </form>
+     <label class="etiqueta_dato">Género</label>
+        <select name="genero" class="campo_dato" required>
+            <option value="">Seleccione...</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Otro">Otro</option>
+        </select>
+
+    <label class="etiqueta_dato">Contraseña</label>
+    <input type="password" name="contrasena" class="campo_dato" required>
+
+    <label class="etiqueta_dato">Confirmar Contraseña</label>
+    <input type="password" name="contrasena_confirmation" class="campo_dato" required>
+
+    <div class="botonera_admin">
+        <button type="submit">Registrar Administrador</button>
+    </div>
+</form>
 
     </div>
 

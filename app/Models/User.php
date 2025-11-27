@@ -14,7 +14,8 @@ class User extends Authenticatable
         'email',
         'telefono',
         'genero',
-        'password'
+        'password',
+        'rol'
     ];
 
     protected $hidden = [
@@ -53,4 +54,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Equipo::class, 'creador_id');
     }
+    public function isAdmin()
+{
+    return $this->rol === 'admin';
+}
+
+public function isOrganizador()
+{
+    return $this->rol === 'organizador';
+}
+
+public function isJugador()
+{
+    return $this->rol === 'jugador';
+}
+
 }

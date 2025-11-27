@@ -4,38 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Organizador - TeamUp</title>
-
     <link rel="stylesheet" href="{{ asset('css/registro_organizador.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
 
-<header class="encabezado_usuario">
-    <div class="bloque_superior_usuario">
-        <div class="logo_titulo_usuario">
-            <img src="{{ asset('imagenes/logo_final.png') }}" class="logo_usuario">
-            <h2 class="titulo_usuario">Registro de Usuario</h2>
+<header class="encabezado_organizador">
+    <div class="bloque_superior_organizador">
+        <div class="logo_titulo_organizador">
+            <img src="{{ asset('imagenes/logo_final.png') }}" class="logo_organizador">
+            <h2 class="titulo_organizador">Registro Organizador</h2>
         </div>
-
-        <ul class="menu_usuario">
-
+        <ul class="menu_organizador">
+            <li><a href="{{ route('login') }}">Volver al inicio</a></li>
             <li><a href="{{ route('registro') }}">Tipo registro</a></li>
         </ul>
     </div>
 </header>
 
-<div class="contenido_principal_usuario">
-
-    <div class="texto_central_usuario">
-        <h2>Completa tus <span class="resaltado_usuario">datos personales</span></h2>
+<div class="contenido_principal_organizador">
+    <div class="texto_central_organizador">
+        <h2>Completa los <span class="resaltado_organizador">datos personales</span></h2>
     </div>
 
-    <img src="{{ asset('imagenes/nuevo_registro_usuario.png') }}" class="imagen_cuenta">
+    <img src="{{ asset('imagenes/nuevo_registro_admin2.png') }}" class="imagen_organizador">
 
-    <div class="contenedor_formulario_usuario">
-
-        {{-- FORMULARIO CORRECTO --}}
-        <form action="{{ route('registro_usuario.store') }}" method="POST" class="formulario_usuario">
+    <div class="contenedor_formulario_organizador">
+        <form action="{{ route('registro_organizador.store') }}" method="POST" class="formulario_organizador">
             @csrf
 
             <label class="etiqueta_dato">Tipo Documento</label>
@@ -57,9 +52,7 @@
             <input type="text" name="apellido" class="campo_dato" required>
 
             <label class="etiqueta_dato">Correo</label>
-            <input type="email" name="email" class="campo_dato" required>
-
-
+            <input type="email" name="correo" class="campo_dato" required>
 
             <label class="etiqueta_dato">Teléfono</label>
             <input type="number" name="telefono" class="campo_dato" required>
@@ -78,17 +71,15 @@
             <label class="etiqueta_dato">Confirmar Contraseña</label>
             <input type="password" name="contrasena_confirmation" class="campo_dato" required>
 
-            <div class="botones_usuario">
-                <button type="submit">Registrar Usuario</button>
+            <div class="botonera_organizador">
+                <button type="submit" class="boton_registro">Registrar Organizador</button>
             </div>
-
         </form>
-        {{-- FIN FORMULARIO --}}
     </div>
 </div>
 
-<footer class="pie_usuario">
-    © 2025 TeamUp – Registro de Usuario
+<footer class="pie_organizador">
+    © 2025 TeamUp – Registro Organizador
 </footer>
 
 </body>

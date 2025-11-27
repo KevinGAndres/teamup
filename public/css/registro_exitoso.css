@@ -83,3 +83,24 @@ body {
     background: #0056b3;
     transform: scale(1.05);
 }
+
+
+.botonera_organizador {
+    text-align: center;
+}
+
+.boton_registro {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.boton_registro:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}

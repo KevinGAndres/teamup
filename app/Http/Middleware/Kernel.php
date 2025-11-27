@@ -1,3 +1,6 @@
 <?php
 
-'rol' => \App\Http\Middleware\RolMiddleware::class,
+protected $routeMiddleware = [
+    // ...
+    'check.role' => \App\Http\Middleware\CheckRole::class,
+];

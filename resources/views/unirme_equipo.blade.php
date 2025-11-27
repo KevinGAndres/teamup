@@ -61,7 +61,7 @@
                     <p><strong>Deporte:</strong> {{ $equipo->deporte }}</p>
                     <p><strong>Lugar:</strong> {{ $equipo->lugar }}</p>
 
-                <form action="{{ route('equipo.solicitud', $equipo->id_equipo) }}" method="POST">
+                    <form action="{{ route('equipos.solicitud', $equipo->id_equipo) }}" method="POST">
                         @csrf
                         <button class="boton_solicitud" type="submit">Enviar Solicitud</button>
                     </form>

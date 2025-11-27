@@ -39,43 +39,47 @@
 </section>
 
 <section class="contenedor_formulario mt-4">
-  <form action="{{ route('equipo.store') }}" method="POST" enctype="multipart/form-data" class="formulario shadow p-4 rounded">
-        @csrf
+    @php($edicion = isset($equipo))
+    <form action="{{ $edicion ? route('equipos.update', $equipo->id_equipo) : route('equipo.store') }}" method="POST" enctype="multipart/form-data" class="formulario shadow p-4 rounded">
+          @csrf
+          @if($edicion)
+              @method('PUT')
+          @endif
 
         <div class="mb-3">
             <label class="etiqueta">Nombre del Equipo</label>
-            <input type="text" name="nombre" class="campo" required>
+            <input type="text" name="nombre" class="campo" value="{{ old('nombre', $equipo->nombre ?? '') }}" required>
         </div>
 
         <div class="mb-3">
             <label class="etiqueta">Deporte</label>
-            <input type="text" name="deporte" class="campo" required>
+            <input type="text" name="deporte" class="campo" value="{{ old('deporte', $equipo->deporte ?? '') }}" required>
         </div>
 
         <div class="mb-3">
             <label class="etiqueta">Integrantes</label>
-            <input type="number" name="integrantes" class="campo" min="1" required>
+            <input type="number" name="integrantes" class="campo" min="1" value="{{ old('integrantes', $equipo->integrantes ?? '') }}" required>
 
         </div>
 
         <div class="mb-3">
             <label class="etiqueta">Correo</label>
-            <input type="email" name="correo" class="campo" required>
+            <input type="email" name="correo" class="campo" value="{{ old('correo', $equipo->correo ?? '') }}" required>
         </div>
 
         <div class="mb-3">
             <label class="etiqueta">Género</label>
             <select name="genero" class="campo_seleccion" required>
-                <option disabled selected>Seleccione una opción</option>
-                <option>Masculino</option>
-                <option>Femenino</option>
-                <option>Mixto</option>
-            </select>
+                  <option disabled {{ old('genero', $equipo->genero ?? '') ? '' : 'selected' }}>Seleccione una opción</option>
+                  <option value="Masculino" {{ old('genero', $equipo->genero ?? '') === 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                  <option value="Femenino" {{ old('genero', $equipo->genero ?? '') === 'Femenino' ? 'selected' : '' }}>Femenino</option>
+                  <option value="Mixto" {{ old('genero', $equipo->genero ?? '') === 'Mixto' ? 'selected' : '' }}>Mixto</option>
+              </select>
         </div>
 
         <div class="mb-3">
             <label class="etiqueta">Lugar</label>
-            <input type="text" name="lugar" class="campo" required>
+            <input type="text" name="lugar" class="campo" value="{{ old('lugar', $equipo->lugar ?? '') }}" required>
         </div>
         <div class="mb-4">
           <label class="etiqueta">Logo del Equipo</label>

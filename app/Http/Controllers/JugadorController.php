@@ -39,7 +39,7 @@ class JugadorController extends Controller
             'telefono' => $request->telefono
         ]);
 
-         return redirect()
+            return redirect()
             ->route('gestion_equipos')
             ->with('success', 'Registro exitoso.');
              }

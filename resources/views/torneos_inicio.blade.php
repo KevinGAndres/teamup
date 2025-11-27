@@ -23,6 +23,10 @@
 <section class="seccion_bienvenida text-center">
    <h1><span class="resaltado">Gestión de Torneos</span></h1>
    <p class="resaltado">Explora opciones para crear, buscar o participar en torneos amistosos.</p>
+   
+   @if(session('success'))
+      <div class="alert alert-success mt-3">{{ session('success') }}</div>
+   @endif
 </section>
 
 <section class="seccion_tarjetas">
@@ -31,7 +35,7 @@
       <div class="contenido_tarjeta">
          <h4>Crear Torneo</h4>
          <p>Diseña y configura nuevos torneos.</p>
-         <a href="{{ route('torneo_create') }}" class="boton_entrar">Entrar</a>
+         <a href="{{ route('torneos.create') }}" class="boton_entrar">Entrar</a>
       </div>
    </div>
 
